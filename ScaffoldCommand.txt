@@ -1,0 +1,8 @@
+Scaffold-DbContext '#conn' Microsoft.EntityFrameworkCore.SqlServer -f -OutputDir $folder -Context #context -Tables #tables -ErrorAction SilentlyContinue
+
+
+Data Source= 107.151.3.34\MSSQLSERVER2016;Initial Catalog=WmsSystemDb;user id=freefixe_filip;password=Qwerty1$$;
+
+
+
+Scaffold-DbContext Data Source= 107.151.3.34\MSSQLSERVER2016;Initial Catalog=WmsSystemDb;user id=freefixe_filip;password=Qwerty1$$ Microsoft.EntityFrameworkCore.SqlServer -ErrorAction SilentlyContinue
