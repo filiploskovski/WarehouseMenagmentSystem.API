@@ -1,6 +1,6 @@
 ﻿namespace Wms.Data
 {
-    public class BaseEntity
+    public class EntityModel
     {
         public int Id { get; set; }
     }

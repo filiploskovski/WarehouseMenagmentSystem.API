@@ -2,15 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Wms.Data
+namespace Wms.Data.Entities
 {
-    public partial class WmsSystemDbContext : DbContext
+    public partial class DataContext : DbContext
     {
-        public WmsSystemDbContext()
+        public DataContext()
         {
         }
 
-        public WmsSystemDbContext(DbContextOptions<WmsSystemDbContext> options)
+        public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Wms.Data
+namespace Wms.Data.Entities
 {
     public partial class Address
     {
