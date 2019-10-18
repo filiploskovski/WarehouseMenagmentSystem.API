@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Wms.Repo
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> Get();
-        T GetById(int id);
-        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>>  Get();
+        Task<T> GetById(int id);
+        Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate);
 
-        void Insert(T entity);
-        void InsertRange(IEnumerable<T> entities);
+        Task Insert(T entity);
+        Task InsertRange(IEnumerable<T> entities);
 
-        void Update(T entity);
+        Task Update(T entity);
 
-        void Remove(T entity);
-        void RemoveRange(IEnumerable<T> entities);
+        Task Remove(T entity);
+        Task RemoveRange(IEnumerable<T> entities);
 
     }
 }
