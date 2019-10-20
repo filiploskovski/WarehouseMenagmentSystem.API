@@ -21,10 +21,16 @@ namespace WarehouseMenagmentSystem.Controllers
         }
 
         [HttpGet]
+        [Route("Get")]
         public async Task<ActionResult<IEnumerable<Contact>>> Get()
         {
             var xxx = await _contactService.Get();
             return new List<Contact>();
+        }
+        [HttpPost]
+        public async Task Create(Contact model)
+        {
+            await _contactService.Create(model);
         }
 
     }
