@@ -1,2 +1,2 @@
 
-Scaffold-DbContext 'Data Source= 107.151.3.34\MSSQLSERVER2016;Initial Catalog=WmsSystemDb;user id=freefixe_filip;password=Qwerty1$$;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context "DataContext"
+Scaffold-DbContext 'Data Source= 107.151.3.34\MSSQLSERVER2016;Initial Catalog=WmsSystemDb;user id=freefixe_filip;password=Qwerty1$$;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context "DataContext" -force

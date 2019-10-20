@@ -20,5 +20,7 @@ namespace Wms.Repo
         Task Remove(T entity);
         Task RemoveRange(IEnumerable<T> entities);
 
+        Task Save();
+
     }
 }

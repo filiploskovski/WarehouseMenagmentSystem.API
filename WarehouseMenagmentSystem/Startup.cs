@@ -42,6 +42,13 @@ namespace WarehouseMenagmentSystem
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
 
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IContactService, ContactService>();
         }
@@ -68,6 +75,7 @@ namespace WarehouseMenagmentSystem
             });
 
             app.UseHttpsRedirection();
+            app.UseCors("MyPolicy");
             app.UseMvc();
         }
     }

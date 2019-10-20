@@ -69,8 +69,6 @@ namespace Wms.Data.Entities
 
             modelBuilder.Entity<Contact>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.CompanyName)
                     .IsRequired()
                     .HasMaxLength(50);

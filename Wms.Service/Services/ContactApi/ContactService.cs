@@ -17,9 +17,9 @@ namespace Wms.Service.Services
             _contactRepository = contactRepository;
         }
 
-        public Task Create(Contact model)
+        public async Task Create(Contact model)
         {
-            throw new NotImplementedException();
+            await _contactRepository.Insert(model);
         }
 
         public Task Delete(Contact model)

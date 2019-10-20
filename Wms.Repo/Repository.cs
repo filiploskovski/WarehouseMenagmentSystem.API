@@ -35,6 +35,7 @@ namespace Wms.Repo
         public async Task Insert(T entity)
         {
             await dataContext.Set<T>().AddAsync(entity);
+            await Save();
         }
 
         public async Task InsertRange(IEnumerable<T> entities)
@@ -55,6 +56,11 @@ namespace Wms.Repo
         public Task Update(T entity)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task Save()
+        {
+            await dataContext.SaveChangesAsync();
         }
     }
 }
