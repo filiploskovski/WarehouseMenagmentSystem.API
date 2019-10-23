@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Wms.Data.Entities;
+using Wms.Service.Models;
 
 namespace Wms.Service.Interfaces
 {
-    public interface IContactService : IGenericService<Contact>
+    public interface ICustomerService : IGenericService<CustomerModel>
     {
     }
 }

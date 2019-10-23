@@ -1,20 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseMenagmentSystem", "WarehouseMenagmentSystem\WarehouseMenagmentSystem.csproj", "{8295ECB1-39C8-4341-AB35-CA85E3B11FB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseMenagmentSystem", "WarehouseMenagmentSystem\WarehouseMenagmentSystem.csproj", "{8295ECB1-39C8-4341-AB35-CA85E3B11FB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wms.Data", "Wms.Data\Wms.Data.csproj", "{2421ED69-9551-45FE-BE11-E4F3520C69A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wms.Data", "Wms.Data\Wms.Data.csproj", "{2421ED69-9551-45FE-BE11-E4F3520C69A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wms.Repo", "Wms.Repo\Wms.Repo.csproj", "{7D86E3FA-9E2C-4380-A739-FE817B9FCB54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wms.Repo", "Wms.Repo\Wms.Repo.csproj", "{7D86E3FA-9E2C-4380-A739-FE817B9FCB54}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionScripts", "SolutionScripts", "{29E64B48-31B4-4364-8609-3031203978D3}"
 	ProjectSection(SolutionItems) = preProject
+		scaffold.ps1 = scaffold.ps1
 		ScaffoldCommand.txt = ScaffoldCommand.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wms.Service", "Wms.Service\Wms.Service.csproj", "{DD182ACD-3FA6-40D4-B738-21CE3C68358D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wms.Service", "Wms.Service\Wms.Service.csproj", "{DD182ACD-3FA6-40D4-B738-21CE3C68358D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

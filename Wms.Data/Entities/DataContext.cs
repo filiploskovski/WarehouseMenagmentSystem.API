@@ -15,8 +15,9 @@ namespace Wms.Data.Entities
         {
         }
 
-        public virtual DbSet<Address> Address { get; set; }
-        public virtual DbSet<Contact> Contact { get; set; }
+        public virtual DbSet<CAddress> CAddress { get; set; }
+        public virtual DbSet<CContactPerson> CContactPerson { get; set; }
+        public virtual DbSet<CCustomer> CCustomer { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,9 +33,17 @@ namespace Wms.Data.Entities
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:DefaultSchema", "freefixe_filip");
 
-            modelBuilder.Entity<Address>(entity =>
+            modelBuilder.Entity<CAddress>(entity =>
             {
+                entity.ToTable("cAddress");
+
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Address)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Address2).HasMaxLength(50);
 
                 entity.Property(e => e.City)
                     .IsRequired()
@@ -44,38 +53,28 @@ namespace Wms.Data.Entities
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Fax)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Fax).HasMaxLength(50);
 
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Phone).HasMaxLength(50);
 
                 entity.Property(e => e.State)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Street)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.HasOne(d => d.Contact)
-                    .WithMany(p => p.Address)
-                    .HasForeignKey(d => d.ContactId)
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.CAddress)
+                    .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Address_Contact");
+                    .HasConstraintName("FK_cAddress_cCustomer");
             });
 
-            modelBuilder.Entity<Contact>(entity =>
+            modelBuilder.Entity<CContactPerson>(entity =>
             {
-                entity.Property(e => e.CompanyName)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.ToTable("cContactPerson");
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Email).HasMaxLength(50);
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
@@ -85,9 +84,42 @@ namespace Wms.Data.Entities
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Mobile).HasMaxLength(50);
+
+                entity.Property(e => e.Salutation).HasMaxLength(50);
+
+                entity.Property(e => e.WorkPhone)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.CContactPerson)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_cContactPerson_cContactPerson");
+            });
+
+            modelBuilder.Entity<CCustomer>(entity =>
+            {
+                entity.ToTable("cCustomer");
+
+                entity.Property(e => e.CompanyName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.FirstName).HasMaxLength(50);
+
+                entity.Property(e => e.LastName).HasMaxLength(50);
+
                 entity.Property(e => e.Mobile)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.Property(e => e.Salutation).HasMaxLength(30);
 
                 entity.Property(e => e.Website).HasMaxLength(50);
 
