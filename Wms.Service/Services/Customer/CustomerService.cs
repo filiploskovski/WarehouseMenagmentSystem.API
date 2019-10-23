@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wms.Data.Entities;
 using Wms.Repo;
 using Wms.Service.Interfaces;
@@ -20,7 +21,7 @@ namespace Wms.Service.Services.Customer
 
         public async Task<IEnumerable<CustomerModel>> Get()
         {
-            return await _customerRepository.Get();
+            return await _customerRepository.Find(x => x.CustomerType != (short) Wms.Service.Enums.CustomerType.Vendor);
         }
 
         public Task<CustomerModel> GetById(int id)

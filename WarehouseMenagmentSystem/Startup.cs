@@ -17,6 +17,7 @@ using Wms.Data.Entities;
 using Wms.Repo;
 using Wms.Service.Interfaces;
 using Wms.Service.Services;
+using Wms.Service.Services.Customer;
 
 namespace WarehouseMenagmentSystem
 {
@@ -50,7 +51,7 @@ namespace WarehouseMenagmentSystem
             }));
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

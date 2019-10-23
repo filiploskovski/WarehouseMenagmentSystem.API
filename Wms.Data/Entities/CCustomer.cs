@@ -14,7 +14,7 @@ namespace Wms.Data.Entities
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public bool CustomerType { get; set; }
+        public short CustomerType { get; set; }
         public string CompanyName { get; set; }
         public string Email { get; set; }
         public string WorkPhone { get; set; }

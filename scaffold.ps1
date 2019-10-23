@@ -9,4 +9,4 @@ foreach ($proj in Get-Project) {
 	}
 }
 
-Scaffold-DbContext '$connectionString' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context "DataContext" -force
+Scaffold-DbContext $connectionString Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context "DataContext" -force
