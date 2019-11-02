@@ -7,7 +7,6 @@
             Individual = 2,
             Vendor = 3
         }
-
         public enum CustomerAddressType
         {
             Shipping = 1,

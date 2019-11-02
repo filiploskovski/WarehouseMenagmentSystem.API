@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Wms.Service.Models
+namespace Wms.Repo.Entities
 {
-    public class CustomerModel
+    public partial class CCustomer
     {
+        public CCustomer()
+        {
+            CAddress = new HashSet<CAddress>();
+            CContactPerson = new HashSet<CContactPerson>();
+        }
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,7 +21,8 @@ namespace Wms.Service.Models
         public string Mobile { get; set; }
         public string Website { get; set; }
         public string Salutation { get; set; }
-        public List<AddressModel> Addresses { get; set; }
-        public List<ContactPersonsModel> ContactPersons { get; set; }
+
+        public virtual ICollection<CAddress> CAddress { get; set; }
+        public virtual ICollection<CContactPerson> CContactPerson { get; set; }
     }
 }

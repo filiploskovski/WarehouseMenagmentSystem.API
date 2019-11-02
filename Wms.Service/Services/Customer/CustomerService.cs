@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -21,12 +22,12 @@ namespace Wms.Service.Services.Customer
 
         public async Task<IEnumerable<CustomerModel>> Get()
         {
-            return await _customerRepository.Find(x => x.CustomerType != (short) Wms.Service.Enums.CustomerType.Vendor);
+            return await _customerRepository.ListAllAsync(x => x.QueryModel());
         }
 
-        public Task<CustomerModel> GetById(int id)
+        public async Task<CustomerModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _customerRepository.FindFirst(x => x.Where(y => y.Id == id).QueryModel());
         }
 
         public Task Create(CustomerModel model)
@@ -38,7 +39,6 @@ namespace Wms.Service.Services.Customer
         {
             throw new NotImplementedException();
         }
-
         public Task Delete(CustomerModel model)
         {
             throw new NotImplementedException();

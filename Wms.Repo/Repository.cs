@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Wms.Data.Entities;
@@ -21,6 +22,20 @@ namespace Wms.Repo
             return await Task.FromResult(dataContext.Set<T>().Where(predicate));
         }
 
+        public async Task<TU> FindFirst<TU>(Func<IQueryable<T>, IQueryable<TU>> queryCallback)
+        {
+            var query = this.dataContext.Set<T>().AsQueryable<T>().Provider.CreateQuery<TU>(queryCallback((IQueryable<T>)this.dataContext.Set<T>()).Expression);
+            var entity = await query.FirstOrDefaultAsync();
+            return entity;
+        }
+
+        public async Task<List<U>> ListAllAsync<U>(Func<IQueryable<T>, IQueryable<U>> queryCallback)
+        {
+            var query = this.dataContext.Set<T>().AsQueryable<T>().Provider.CreateQuery<U>(queryCallback((IQueryable<T>)this.dataContext.Set<T>()).Expression);
+            var listAsync = await query.ToListAsync<U>(new CancellationToken());
+            return listAsync;
+        }
+
         public async Task<IEnumerable<T>> Get()
         {
             return await Task.FromResult(dataContext.Set<T>().ToList());
@@ -29,7 +44,6 @@ namespace Wms.Repo
         public async Task<T> GetById(int id)
         {
             return await Task.FromResult(dataContext.Set<T>().Find(id));
-
         }
 
         public async Task Insert(T entity)

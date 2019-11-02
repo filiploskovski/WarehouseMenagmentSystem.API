@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Wms.Data.Entities;
 using Wms.Repo;
@@ -33,7 +34,10 @@ namespace WarehouseMenagmentSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
